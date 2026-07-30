@@ -17,13 +17,23 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "deltaflow",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"source": {
+								"p_container": "source",
+								"p_folder": "delta source",
+								"p_file": "locations.csv"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
 					},
-					"traceLevel": "Fine"
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
+					}
 				}
 			}
 		],
