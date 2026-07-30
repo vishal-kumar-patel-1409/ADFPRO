@@ -12,7 +12,15 @@
 					"name": "source"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "Data_Lake",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sinkDelta"
+				}
+			],
 			"transformations": [
 				{
 					"name": "UpperState"
@@ -47,7 +55,26 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
-				"selectcolumns alterRow() ~> alterRow"
+				"selectcolumns alterRow(upsertIf(1==1)) ~> alterRow",
+				"alterRow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'sink',",
+				"     folderPath: 'deltaSink',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: true,",
+				"     keys:['location_id'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkDelta"
 			]
 		}
 	}
