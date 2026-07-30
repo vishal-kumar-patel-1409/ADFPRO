@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADFPro0728"
+		},
+		"Data_Lake_accountKey": {
+			"value": ""
+		},
+		"SQLDatabase_password": {
+			"value": ""
+		},
+		"Data_Lake_properties_typeProperties_url": {
+			"value": "https://adfpro0728.dfs.core.windows.net/"
+		},
+		"RestAPI_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"SQLDatabase_properties_typeProperties_server": {
+			"value": "sqladfproserver.database.windows.net"
+		},
+		"SQLDatabase_properties_typeProperties_database": {
+			"value": "datadb0728"
+		},
+		"SQLDatabase_properties_typeProperties_userName": {
+			"value": "vishaladmin"
+		}
+	}
+}
